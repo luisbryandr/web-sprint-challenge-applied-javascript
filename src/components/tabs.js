@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Tabs = (topics) => {
   const mainDiv = document.createElement('div');
   mainDiv.className = 'topics';
@@ -27,6 +29,18 @@ const Tabs = (topics) => {
 }
 
 const tabsAppender = (selector) => {
+  axios.get('http://localhost:5000/api/topics')
+  .then((response) => {
+    // deal with the response data in here
+   const arrayTabs = Tabs(response.data.topics);
+   const cssSelect = document.querySelectorAll(selector);
+    cssSelect.forEach((element) => {element.appendChild(arrayTabs)});
+    return cssSelect
+  })
+  .catch((err) => {
+     console.log(err) // deal with the error in here
+  })
+  
   // TASK 4
   // ---------------------
   // Implement this function which takes a css selector as its only argument.
