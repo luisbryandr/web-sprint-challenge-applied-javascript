@@ -1,10 +1,14 @@
 const Tabs = (topics) => {
-  const div = document.createElement('div')
-  document.body.appendChild(div)
-
-  const jsDiv = document.
-
-
+  const mainDiv = document.createElement('div');
+  mainDiv.className = 'topics';
+  
+  topics.forEach((stringValue) => {
+     const childDiv = document.createElement('div')
+     childDiv.className = 'tab';
+     childDiv.textContent = stringValue;
+     mainDiv.appendChild(childDiv);
+  })
+  return mainDiv
 
   // TASK 3
   // ---------------------
