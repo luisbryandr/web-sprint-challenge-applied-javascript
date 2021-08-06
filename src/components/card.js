@@ -1,4 +1,37 @@
-const Card = (article) => {
+import axios from "axios";
+
+const Card = (articleobject) => {
+  const cardDiv = document.createElement('div')
+  cardDiv.className = 'card'
+  document.body.appendChild(cardDiv)
+
+  const headlineDiv = document.createElement('div')
+  headlineDiv.className = 'headline'
+  headlineDiv.textContent = articleobject.headline
+  cardDiv.appendChild(headlineDiv)
+
+  const authorDiv = document.createElement('div')
+  authorDiv.className= 'author'
+  cardDiv.appendChild(authorDiv)
+
+  const imageCont = document.createElement('div')
+  imageCont.className = 'img-container'
+  authorDiv.appendChild(imageCont)
+
+
+  const image = document.createElement('img')
+  image.setAttribute(src,`${articleobject.authorPhoto}`)
+  imageCont.appendChild(image)
+
+  const span = document.createElement('span')
+  span.textContent = `By ${articleobject.auhtorName}`
+  authorDiv.appendChild(span)
+
+  cardDiv.addEventListener('click', event =>
+  console.log(articleobject.headline))
+
+  return cardDiv
+  
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -20,6 +53,19 @@ const Card = (article) => {
 }
 
 const cardAppender = (selector) => {
+  axios.get('http://localhost:5000/api/articles')
+  .then((response) => {
+    // deal with the response data in here
+   const arrayCards = Card(response.data.articles);
+   const cssSelect = document.querySelectorAll(selector);
+    cssSelect.forEach((element) => {element.appendChild(arrayCards)});
+    return cssSelect
+  })
+  .catch((err) => {
+     console.log(err) // deal with the error in here
+ 
+ 
+ 
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
@@ -28,6 +74,8 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+
+  })
 }
 
 export { Card, cardAppender }
