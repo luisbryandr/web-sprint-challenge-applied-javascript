@@ -35,11 +35,11 @@ const Header = (title, date, temp) => {
 
 }
 
-console.log('yo')
+
 
 const headerAppender = (selector) => {
     const cssSelect = document.querySelectorAll(selector)
-    cssSelect.forEach(element => {element.appendChild(Header())
+    cssSelect.forEach(element => {element.appendChild(Header('Lambda Times', 'Today', 'Cool'))
     });
 
 

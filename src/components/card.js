@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const Card = (articleobject) => {
+const Card = (article) => {
   const cardDiv = document.createElement('div')
   cardDiv.className = 'card'
   document.body.appendChild(cardDiv)
 
   const headlineDiv = document.createElement('div')
   headlineDiv.className = 'headline'
-  headlineDiv.textContent = articleobject.headline
+  headlineDiv.textContent = article.headline
   cardDiv.appendChild(headlineDiv)
 
   const authorDiv = document.createElement('div')
@@ -20,15 +20,17 @@ const Card = (articleobject) => {
 
 
   const image = document.createElement('img')
-  image.setAttribute(src,`${articleobject.authorPhoto}`)
+  image.setAttribute('src',`${article.authorPhoto}`)
   imageCont.appendChild(image)
 
   const span = document.createElement('span')
-  span.textContent = `By ${articleobject.auhtorName}`
+  span.textContent = `By ${article.authorName}`
   authorDiv.appendChild(span)
 
-  cardDiv.addEventListener('click', event =>
-  console.log(articleobject.headline))
+  cardDiv.addEventListener('click', event =>{
+    console.log(articleobject.headline)
+  })
+  
 
   return cardDiv
   
