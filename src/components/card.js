@@ -55,13 +55,15 @@ const Card = (article) => {
 }
 
 const cardAppender = (selector) => {
+  const cssSelect = document.querySelectorAll(selector)
   axios.get('http://localhost:5000/api/articles')
   .then((response) => {
     // deal with the response data in here
-   const newsCards = Card(response.data.articles.javascript);
-   const cssSelect = document.querySelectorAll(selector);
-    cssSelect.forEach((element) => {element.appendChild(newsCards)});
-    return cssSelect
+   const jsCard = Card(response.data.articles.javascript)
+   jsCard.forEach(element => {
+     cssSelect.appendChild(Card(element))
+   });
+    
   })
   .catch((err) => {
      console.log(err) // deal with the error in here
