@@ -35,14 +35,18 @@ const Header = (title, date, temp) => {
 
 }
 
+console.log('yo')
+
 const headerAppender = (selector) => {
+    const cssSelect = document.querySelectorAll(selector)
+    cssSelect.forEach(element => {element.appendChild(Header())
+    });
 
 
 
 
 
 
-  
   // TASK 2
   // ---------------------
   // Implement this function taking a css selector as its only argument.

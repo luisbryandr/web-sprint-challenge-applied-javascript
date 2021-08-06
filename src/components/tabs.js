@@ -1,4 +1,11 @@
 const Tabs = (topics) => {
+  const div = document.createElement('div')
+  document.body.appendChild(div)
+
+  const jsDiv = document.
+
+
+
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
